@@ -844,4 +844,16 @@ class InArray2
 		}
 	}
 
+	public function mutlipleDimensions():void
+	{
+		$multiDimensionalArr = [
+            'foo' => ['string'],
+            'bar' => ['integer'],
+        ];
+        foreach($multiDimensionalArr as $oneDimensionalArr) {
+            if (in_array('string', $oneDimensionalArr, true)) {
+
+            }
+        }
+	}
 }

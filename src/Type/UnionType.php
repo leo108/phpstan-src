@@ -86,7 +86,15 @@ class UnionType implements CompoundType
 			$results[] = $innerType->isSuperTypeOf($otherType);
 		}
 
-		return TrinaryLogic::createNo()->or(...$results);
+		if (TrinaryLogic::createYes()->and(...$results)->yes()) {
+			return TrinaryLogic::createYes();
+		}
+
+		if (TrinaryLogic::createNo()->or(...$results)->no()) {
+			return TrinaryLogic::createNo();
+		}
+
+		return TrinaryLogic::createMaybe();
 	}
 
 	public function isSubTypeOf(Type $otherType): TrinaryLogic
